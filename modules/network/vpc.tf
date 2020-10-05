@@ -46,7 +46,7 @@ resource "google_compute_subnetwork" "nodes" {
   }
 }
 
-resource "google_compute_global_address" "service-connection" {
+resource "google_compute_global_address" "service_connection" {
   address       = var.service_connection_cidr
   name          = var.service_connection_name
   purpose       = "VPC_PEERING"
