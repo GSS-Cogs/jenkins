@@ -12,7 +12,7 @@ provider "google" {
 }
 
 module "vpc" {
-  source  = "..\/modules\/network"
+  source  = "../modules/network"
   env     = var.env
   project = var.project
   region  = var.region
