@@ -10,3 +10,10 @@ provider "google" {
   project = var.project
   region  = var.region
 }
+
+module "vpc" {
+  source  = "../modules/global"
+  env     = var.env
+  project = var.project
+  region  = var.region
+}
