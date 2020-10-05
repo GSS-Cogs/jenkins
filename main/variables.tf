@@ -12,5 +12,5 @@ variable "region" {
 
 variable "env" {
   description = "Environment e.g. dev"
-  default = env
+  default = dev
 }
