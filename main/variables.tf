@@ -9,3 +9,8 @@ variable "region" {
   type        = string
   default     = "europe-west2"
 }
+
+variable "env" {
+  description = "Environment e.g. dev"
+  default = env
+}
