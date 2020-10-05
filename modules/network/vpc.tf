@@ -26,8 +26,6 @@ resource "google_compute_router_nat" "nat" {
 resource "google_compute_address" "nat" {
   name   = "nat"
   region = var.region
-
-  network_tier = "STANDARD"
 }
 
 resource "google_compute_subnetwork" "nodes" {
