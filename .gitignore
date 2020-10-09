@@ -1,3 +1,9 @@
+# Anything with the word 'secret'
+*secret*
+
+# Other classic ones
+.DS_Store
+
 # Local .terraform directories
 **/.terraform/*
 
