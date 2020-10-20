@@ -3,6 +3,15 @@ terraform {
   backend "gcs" {
     bucket = "terraform-state-optimum-bonbon-257411"
   }
+  required_providers {
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
+  }
+}
+
+provider "kubernetes" {
+  load_config_file = false
 }
 
 provider "google" {
@@ -16,4 +25,13 @@ module "vpc" {
   env     = var.env
   project = var.project
   region  = var.region
+}
+
+module "gke_cluster" {
+  source  = "../modules/gke_cluster"
+  env     = var.env
+  project = var.project
+  region  = var.region
+  network_name = module.vpc.network_name
+  subnet_name = module.vpc.subnet_name
 }
