@@ -29,7 +29,7 @@ resource "google_container_node_pool" "jenkins" {
 
     # preemptible  = true
     machine_type = "n1-standard-1"
-    tags         = ["gke-node", "${var.project}-gke"]
+    tags         = ["web", "gke-node", "${var.project}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
     }

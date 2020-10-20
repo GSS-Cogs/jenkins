@@ -10,10 +10,6 @@ terraform {
   }
 }
 
-provider "kubernetes" {
-  load_config_file = false
-}
-
 provider "google" {
   version = "3.37.0"
   project = var.project
@@ -21,17 +17,21 @@ provider "google" {
 }
 
 module "vpc" {
-  source  = "../modules/network"
+  source  = "../modules/vpc"
   env     = var.env
   project = var.project
   region  = var.region
 }
 
 module "gke_cluster" {
-  source  = "../modules/gke_cluster"
-  env     = var.env
-  project = var.project
-  region  = var.region
+  source       = "../modules/gke_cluster"
+  env          = var.env
+  project      = var.project
+  region       = var.region
   network_name = module.vpc.network_name
-  subnet_name = module.vpc.subnet_name
+  subnet_name  = module.vpc.subnet_name
+}
+
+output "public_endpoint" {
+  value       = module.gke_cluster.public_endpoint
 }

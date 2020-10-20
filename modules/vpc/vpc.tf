@@ -45,3 +45,15 @@ resource "google_compute_subnetwork" "nodes" {
     ip_cidr_range = var.k8s_subnetwork_services_alias_cidr
   }
 }
+
+resource "google_compute_firewall" "web" {
+  name = "web"
+  network = google_compute_network.k8s.name
+  target_tags = ["web"]
+
+  allow {
+    protocol = "tcp"
+    ports = ["80", "443"]
+  }
+
+}
