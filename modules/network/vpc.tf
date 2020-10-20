@@ -45,12 +45,3 @@ resource "google_compute_subnetwork" "nodes" {
     ip_cidr_range = var.k8s_subnetwork_services_alias_cidr
   }
 }
-
-resource "google_compute_global_address" "service_connection" {
-  address       = var.service_connection_cidr
-  name          = var.service_connection_name
-  purpose       = "VPC_PEERING"
-  address_type  = "INTERNAL"
-  prefix_length = 20
-  network       = google_compute_network.k8s.name
-}
