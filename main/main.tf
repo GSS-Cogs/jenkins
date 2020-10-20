@@ -33,5 +33,5 @@ module "gke_cluster" {
 }
 
 output "public_endpoint" {
-  value       = module.gke_cluster.public_endpoint
+  value = module.gke_cluster.public_endpoint
 }
