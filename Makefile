@@ -48,6 +48,18 @@ create-terraform-sa: ## Create a new service account to be used with terraform -
 							--member serviceAccount:terraform@$(PROJECT_ID).iam.gserviceaccount.com \
 							--role roles/storage.admin
 
+	gcloud projects add-iam-policy-binding $(PROJECT_ID) \
+							--member serviceAccount:terraform@$(PROJECT_ID).iam.gserviceaccount.com \
+							--role roles/compute.networkAdmin
+
+	gcloud projects add-iam-policy-binding $(PROJECT_ID) \
+							--member serviceAccount:terraform@$(PROJECT_ID).iam.gserviceaccount.com \
+							--role roles/iam.serviceAccountUser
+
+	gcloud projects add-iam-policy-binding $(PROJECT_ID) \
+							--member serviceAccount:terraform@$(PROJECT_ID).iam.gserviceaccount.com \
+							--role roles/compute.securityAdmin
+
 create-terraform-sa-key: ## Create and get service account key. Keep this file safe and DO NOT SHARE IT. You only need to do this once.
 	gcloud iam service-accounts keys create $(TERRAFORM_SA_KEY) --iam-account "terraform@$(PROJECT_ID).iam.gserviceaccount.com"
 
